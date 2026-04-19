@@ -366,37 +366,6 @@
   </div>
 </section>
 
-<!-- RSVP -->
-<section class="sec rsvp-bg" id="rsvp">
-  <div class="inner">
-    <p class="sec-lbl" style="color:rgba(44,34,8,0.6);">RSVP</p>
-    <h2 class="sec-title" style="color:var(--ink);">Will You Join <em style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);">Us?</em></h2>
-    <p class="sec-body" style="color:var(--mid);">Kindly confirm your attendance on or before <strong>August 5, 2025</strong>.</p>
-    <div class="rsvp-box">
-      <div id="rsvpForm">
-        <div class="fr"><label>Your Full Name *</label><input type="text" id="gN" placeholder="e.g. Maria Santos"/></div>
-        <div class="fr"><label>Contact Number *</label><input type="tel" id="gP" placeholder="e.g. 09XX XXX XXXX"/></div>
-        <div class="fr"><label>Email Address</label><input type="email" placeholder="optional"/></div>
-        <div class="fr"><label>Number of Guests (including yourself)</label><select><option>1 person</option><option>2 persons</option><option>3 persons</option><option>4 persons</option><option>5 or more</option></select></div>
-        <div class="fr"><label>Which event(s) will you attend?</label>
-          <div class="rr">
-            <div class="ro"><input type="radio" name="ev" id="ev1" checked/><label for="ev1">Both Events 🎉</label></div>
-            <div class="ro"><input type="radio" name="ev" id="ev2"/><label for="ev2">Baptism Only ✝️</label></div>
-            <div class="ro"><input type="radio" name="ev" id="ev3"/><label for="ev3">Birthday Only 🎂</label></div>
-          </div>
-        </div>
-        <div class="fr"><label>Dietary / Special Notes</label><textarea placeholder="Allergies, dietary needs, or anything we should know..."></textarea></div>
-        <button class="btn-go" onclick="submitRSVP()">Confirm My Attendance 🌻</button>
-      </div>
-      <div class="rsvp-ok" id="rsvpOk">
-        <div class="ck">🌟</div>
-        <h3>Thank You!</h3>
-        <p>We're so happy you'll be joining Sophia's celebration! See you on August 16. 💛</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACTS -->
 <section class="sec contact-bg">
   <div class="inner">
@@ -447,13 +416,6 @@
   }
   function closeLB(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
-
-  /* rsvp */
-  function submitRSVP(){
-    if(!document.getElementById('gN').value.trim()||!document.getElementById('gP').value.trim()){alert('Please enter your name and contact number. 💛');return;}
-    document.getElementById('rsvpForm').style.display='none';
-    document.getElementById('rsvpOk').style.display='block';
-  }
 
   /* scroll reveal */
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
