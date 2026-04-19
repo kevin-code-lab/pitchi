@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kaitlyn · Baptism & 1st Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Dancing+Script:wght@500;600;700&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --y1:#F9D923; --y2:#FBE96C; --y3:#FFF3A3; --y4:#FFFAE8;
+      --gold:#C9A227; --gold2:#E8C96A;
+      --white:#FFFFFF; --cream:#FFFDF5; --warm:#FFF8E7;
+      --ink:#2C2208; --mid:#7A6830; --lite:#B8A060;
+      --shadow:rgba(44,34,8,0.12);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--cream);font-family:'Cormorant Garamond',serif;color:var(--ink);overflow-x:hidden;}
+
+    /* PETALS */
+    #petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .petal{position:absolute;border-radius:60% 0 60% 0;animation:floatDown linear infinite;opacity:0.28;}
+    @keyframes floatDown{0%{transform:translateY(-60px) rotate(0deg) scale(1);}50%{transform:translateY(50vh) rotate(180deg) scale(0.85);}100%{transform:translateY(110vh) rotate(360deg) scale(1);}}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:grid;place-items:end center;overflow:hidden;z-index:1;}
+    .hero-photo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .hero-photo-img{width:100%;height:100%;object-fit:cover;display:block;}
+    .hero-photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(ellipse at 50% 38%,#fff9d6 0%,#ffeea0 45%,#f9d923 100%);}
+    .hero-photo-ph .ph-icon{font-size:clamp(5rem,14vw,10rem);animation:breathe 3s ease-in-out infinite;}
+    .hero-photo-ph .ph-lbl{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(90,70,10,0.5);text-align:center;padding:0 20px;}
+    @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,253,245,0.04) 0%,rgba(255,253,245,0.08) 45%,rgba(255,253,245,0.88) 78%,rgba(255,253,245,1) 100%);z-index:2;}
+    .hero-content{position:relative;z-index:3;text-align:center;padding:40px 24px 72px;display:flex;flex-direction:column;align-items:center;width:100%;}
+    .hero-eyebrow{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;animation:fadeUp 1s ease both;}
+    .hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.6rem,14vw,9rem);line-height:0.88;color:var(--ink);letter-spacing:-0.02em;animation:fadeUp 1s 0.15s ease both;}
+    .hero-name .it{font-style:italic;color:var(--gold);}
+    .hero-script{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,4vw,2.3rem);color:var(--mid);margin-top:10px;animation:fadeUp 1s 0.3s ease both;}
+    .hero-rule{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:22px auto;animation:fadeUp 1s 0.4s ease both;}
+    .hero-date{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(0.82rem,2vw,1rem);letter-spacing:0.3em;text-transform:uppercase;color:var(--ink);animation:fadeUp 1s 0.5s ease both;}
+    .hero-sub{font-size:clamp(0.95rem,2vw,1.15rem);font-style:italic;color:var(--lite);margin-top:6px;animation:fadeUp 1s 0.6s ease both;}
+    .scroll-hint{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeUp 1s 1s ease both;}
+    .scroll-hint span{font-family:'Josefin Sans',sans-serif;font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--lite);}
+    .scroll-arrow{width:18px;height:18px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);animation:bounce 1.6s ease-in-out infinite;}
+    @keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+
+    /* SECTION SHELL */
+    .sec{position:relative;z-index:1;padding:80px 24px;}
+    .inner{max-width:960px;margin:0 auto;}
+    .sec-lbl{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.67rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:8px;}
+    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);text-align:center;color:var(--ink);margin-bottom:12px;}
+    .sec-title em{font-style:italic;color:var(--gold);}
+    .sec-body{font-size:clamp(1rem,1.9vw,1.2rem);line-height:1.8;color:var(--mid);text-align:center;max-width:640px;margin:0 auto;}
+    .wave{display:block;width:100%;height:56px;position:relative;z-index:1;}
+
+    /* ── POLAROID STRIP ── */
+    .strip-bg{background:var(--ink);overflow:hidden;padding:72px 0;}
+    .strip-hd{text-align:center;margin-bottom:52px;padding:0 24px;}
+    .strip-hd .sec-lbl{color:var(--y2);}
+    .strip-hd .sec-title{color:var(--white);}
+    .strip-hd .sec-title em{color:var(--y1);}
+    .pol-track{display:flex;gap:28px;padding:20px 48px 40px;overflow-x:auto;scrollbar-width:none;justify-content:center;flex-wrap:nowrap;}
+    .pol-track::-webkit-scrollbar{display:none;}
+    .pol{flex-shrink:0;background:var(--white);padding:14px 14px 44px;box-shadow:0 12px 40px rgba(0,0,0,0.35),0 2px 8px rgba(0,0,0,0.2);width:215px;cursor:pointer;transition:transform 0.35s cubic-bezier(.17,.67,.42,1.3),box-shadow 0.35s;position:relative;}
+    .pol:nth-child(1){transform:rotate(-4deg);}
+    .pol:nth-child(2){transform:rotate(2.5deg);margin-top:24px;}
+    .pol:nth-child(3){transform:rotate(-1.5deg);}
+    .pol:nth-child(4){transform:rotate(3.5deg);margin-top:16px;}
+    .pol:nth-child(5){transform:rotate(-3deg);}
+    .pol:hover{transform:rotate(0deg) scale(1.08)!important;box-shadow:0 24px 64px rgba(0,0,0,0.45);z-index:10;}
+    .pol::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:44px;height:20px;background:rgba(249,217,35,0.55);border-radius:2px;}
+    .pol-frame{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--y4);display:flex;align-items:center;justify-content:center;}
+    .pol-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+    .pol-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;height:100%;background:linear-gradient(135deg,var(--y3),var(--y4));padding:10px;}
+    .pol-ph .pn{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--gold);font-style:italic;line-height:1;}
+    .pol-ph .pt{font-family:'Josefin Sans',sans-serif;font-size:0.54rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--lite);text-align:center;}
+    .pol-cap{font-family:'Dancing Script',cursive;font-size:1rem;color:var(--mid);text-align:center;padding-top:12px;line-height:1.3;}
+
+    /* ── FEATURED GRID ── */
+    .feat-bg{background:var(--warm);}
+    .feat-grid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:18px;margin-top:50px;min-height:500px;}
+    .fg-big{grid-row:1/3;border-radius:28px;overflow:hidden;box-shadow:0 16px 56px var(--shadow);position:relative;cursor:pointer;}
+    .fg-sm{border-radius:20px;overflow:hidden;box-shadow:0 8px 32px var(--shadow);position:relative;cursor:pointer;}
+    .fg-big img,.fg-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+    .fg-big:hover img,.fg-sm:hover img{transform:scale(1.04);}
+    .fg-ph{width:100%;height:100%;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;}
+    .fg-big .fg-ph{background:linear-gradient(160deg,#fff3a3,#f9d923 80%);min-height:420px;}
+    .fg-sm .fg-ph{background:linear-gradient(135deg,#fffae8,#fbe96c);}
+    .fg-ph .pn{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4rem);color:rgba(90,70,10,0.22);font-style:italic;}
+    .fg-ph .pt{font-family:'Josefin Sans',sans-serif;font-size:0.63rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(90,70,10,0.38);text-align:center;}
+    .fg-badge{position:absolute;bottom:18px;left:18px;background:var(--y1);color:var(--ink);font-family:'Dancing Script',cursive;font-size:1rem;padding:8px 18px;border-radius:50px;box-shadow:0 4px 16px rgba(0,0,0,0.12);}
+    @media(max-width:580px){.feat-grid{grid-template-columns:1fr;grid-template-rows:auto;}.fg-big{grid-row:auto;min-height:260px;}.fg-big .fg-ph{min-height:260px;}}
+
+    /* ── MASONRY ── */
+    .gallery-bg{background:var(--cream);}
+    .masonry{columns:3 260px;column-gap:14px;margin-top:50px;}
+    .mi{break-inside:avoid;margin-bottom:14px;border-radius:18px;overflow:hidden;box-shadow:0 6px 28px var(--shadow);position:relative;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;}
+    .mi:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(44,34,8,0.2);}
+    .mi:nth-child(even){border-radius:22px 6px 22px 6px;}
+    .mi img{width:100%;display:block;object-fit:cover;}
+    .mi-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+    .mi:nth-child(1) .mi-ph{background:linear-gradient(135deg,#fff3a3,#f9d923);padding:58px 20px;}
+    .mi:nth-child(2) .mi-ph{background:linear-gradient(135deg,#fffae8,#fbe96c);padding:44px 20px;}
+    .mi:nth-child(3) .mi-ph{background:linear-gradient(135deg,#fdf6cc,#f9d923 90%);padding:68px 20px;}
+    .mi:nth-child(4) .mi-ph{background:linear-gradient(135deg,#fffae8,#fbe96c);padding:50px 20px;}
+    .mi:nth-child(5) .mi-ph{background:linear-gradient(135deg,#fff3a3,#e8c100 90%);padding:54px 20px;}
+    .mi:nth-child(6) .mi-ph{background:linear-gradient(135deg,#fffdf5,#fff3a3);padding:62px 20px;}
+    .mi-ph .pi{font-size:2rem;}
+    .mi-ph .pn{font-family:'Playfair Display',serif;font-size:2.2rem;color:rgba(90,70,10,0.18);font-style:italic;}
+    .mi-ph .pt{font-family:'Josefin Sans',sans-serif;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(90,70,10,0.38);text-align:center;}
+    .mi::after{content:'🌻';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(249,217,35,0);color:transparent;transition:background 0.3s,color 0.3s;}
+    .mi:hover::after{background:rgba(249,217,35,0.18);color:var(--ink);}
+
+    /* ── LIGHTBOX ── */
+    .lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(16,10,2,0.93);align-items:center;justify-content:center;flex-direction:column;padding:24px;}
+    .lb.on{display:flex;}
+    .lb img{max-width:86vw;max-height:78vh;border-radius:14px;box-shadow:0 32px 80px rgba(0,0,0,0.6);}
+    .lb-cap{font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--y2);margin-top:20px;text-align:center;}
+    .lb-close{position:absolute;top:22px;right:28px;font-size:2.2rem;color:var(--y1);cursor:pointer;background:none;border:none;line-height:1;}
+    .lb-ph{width:min(480px,80vw);height:min(380px,56vh);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(135deg,var(--y3),var(--y1));}
+    .lb-ph .pi{font-size:3.5rem;}
+    .lb-ph .pt{font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(60,45,5,0.55);text-align:center;padding:0 28px;}
+
+    /* ── EVENTS ── */
+    .events-bg{background:linear-gradient(180deg,var(--white) 0%,var(--y4) 100%);}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:48px;}
+    .ecard{background:var(--white);border-radius:24px;padding:38px 34px;border:1.5px solid rgba(249,217,35,0.4);box-shadow:0 8px 40px rgba(249,217,35,0.12);position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+    .ecard:hover{transform:translateY(-6px);box-shadow:0 18px 56px rgba(249,217,35,0.24);}
+    .ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--y1),var(--gold));}
+    .ec-icon{font-size:2.3rem;margin-bottom:14px;display:block;}
+    .ec-type{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.67rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+    .ec-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:20px;}
+    .ec-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:1rem;color:var(--mid);line-height:1.5;}
+    .ec-ri{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+    .ec-row strong{color:var(--ink);display:block;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.67rem;letter-spacing:0.18em;text-transform:uppercase;}
+
+    /* ── TIMELINE ── */
+    .tl-bg{background:var(--y4);}
+    .tl{position:relative;margin-top:48px;padding-left:20px;}
+    .tl::before{content:'';position:absolute;left:36px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--y1),var(--gold2),var(--y1));}
+    .tl-item{display:flex;gap:24px;margin-bottom:36px;align-items:flex-start;}
+    .tl-dot{width:36px;height:36px;border-radius:50%;background:var(--y1);border:3px solid var(--white);box-shadow:0 0 0 3px var(--gold2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:1;}
+    .tl-body{padding-top:4px;}
+    .tl-time{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.67rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+    .tl-ev{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:3px;}
+    .tl-desc{font-size:0.95rem;color:var(--lite);font-style:italic;}
+
+    /* ── DRESS CODE ── */
+    .dress-bg{background:var(--white);}
+    .palette{display:flex;justify-content:center;gap:18px;margin-top:36px;flex-wrap:wrap;}
+    .sw{display:flex;flex-direction:column;align-items:center;gap:10px;}
+    .sw-c{width:70px;height:70px;border-radius:50%;box-shadow:0 4px 20px rgba(0,0,0,0.1);border:3px solid rgba(255,255,255,0.8);}
+    .sw-l{font-size:0.77rem;color:var(--lite);letter-spacing:0.05em;text-align:center;}
+
+    /* ── GIFTS ── */
+    .gift-bg{background:var(--warm);}
+    .gift-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:13px;margin-top:26px;}
+    .gi{background:var(--white);border-radius:16px;padding:17px 20px;display:flex;align-items:center;gap:13px;border:1px solid rgba(249,217,35,0.3);}
+    .gi-ic{font-size:1.4rem;}
+    .gi-tx{font-size:0.96rem;color:var(--mid);}
+    .gift-note{background:var(--y4);border-left:4px solid var(--y1);border-radius:12px;padding:20px 24px;margin-top:26px;font-size:1.03rem;color:var(--mid);line-height:1.7;}
+
+    /* ── RSVP ── */
+    .rsvp-bg{background:linear-gradient(135deg,var(--y1) 0%,var(--y2) 50%,var(--y3) 100%);}
+    .rsvp-box{background:var(--white);border-radius:28px;padding:50px 46px;max-width:620px;margin:48px auto 0;box-shadow:0 20px 60px rgba(0,0,0,0.1);}
+    .fr{margin-bottom:20px;}
+    .fr label{display:block;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.67rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--mid);margin-bottom:8px;}
+    .fr input,.fr select,.fr textarea{width:100%;padding:13px 17px;border:1.5px solid rgba(249,217,35,0.5);border-radius:12px;font-family:'Cormorant Garamond',serif;font-size:1.03rem;color:var(--ink);background:var(--cream);outline:none;transition:border-color 0.25s;}
+    .fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--gold);background:#fff;}
+    .fr textarea{resize:vertical;min-height:96px;}
+    .rr{display:flex;gap:11px;flex-wrap:wrap;}
+    .ro{flex:1;min-width:115px;}
+    .ro input{display:none;}
+    .ro label{display:block;text-align:center;padding:11px;border:1.5px solid rgba(249,217,35,0.5);border-radius:12px;cursor:pointer;font-size:0.9rem;color:var(--mid);transition:all 0.2s;}
+    .ro input:checked + label{background:var(--y1);border-color:var(--gold);color:var(--ink);font-weight:600;}
+    .btn-go{width:100%;padding:17px;background:linear-gradient(135deg,var(--y1),var(--gold));color:var(--ink);font-family:'Playfair Display',serif;font-size:1.1rem;letter-spacing:0.08em;border:none;border-radius:14px;cursor:pointer;margin-top:8px;box-shadow:0 6px 24px rgba(249,217,35,0.45);transition:transform 0.2s,box-shadow 0.2s;}
+    .btn-go:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(249,217,35,0.55);}
+    .rsvp-ok{display:none;text-align:center;padding:40px;}
+    .rsvp-ok .ck{font-size:3.5rem;margin-bottom:16px;}
+    .rsvp-ok h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--ink);margin-bottom:10px;}
+    .rsvp-ok p{font-size:1.03rem;color:var(--mid);}
+
+    /* ── CONTACTS ── */
+    .contact-bg{background:var(--cream);}
+    .contacts{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:36px;}
+    .cc{background:var(--white);border-radius:18px;padding:24px 28px;text-align:center;border:1.5px solid rgba(249,217,35,0.35);min-width:195px;}
+    .cc-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:4px;}
+    .cc-role{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.68rem;color:var(--lite);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;}
+    .cc-num{font-size:1rem;color:var(--gold);}
+
+    footer{background:var(--ink);color:rgba(255,255,255,0.44);text-align:center;padding:34px 24px;font-size:0.87rem;position:relative;z-index:1;}
+    footer strong{color:var(--y1);font-family:'Dancing Script',cursive;font-size:1.12rem;}
+
+    /* upload helper banner */
+    .info-bar{background:linear-gradient(90deg,var(--y1),var(--y2),var(--y1));color:var(--ink);text-align:center;padding:13px 24px;font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;position:relative;z-index:10;}
+
+    @media(max-width:640px){.rsvp-box{padding:34px 20px;}.ecard{padding:26px 20px;}.pol{width:172px;}}
+  </style>
+</head>
+<body>
+
+<div id="petals"></div>
+<div class="info-bar">📸 15 photo slots ready — replace placeholders with Sophia's real photos (see guide at bottom)</div>
+
+<!-- ══════════ HERO — PHOTO #1 ══════════ -->
+<section class="hero">
+  <div class="hero-photo">
+    <img class="hero-photo-img" id="heroImg" src="" alt="Sophia Mae"
+      onerror="this.style.display='none';document.getElementById('heroPH').style.display='flex';" style="display:none"/>
+    <div class="hero-photo-ph" id="heroPH">
+      <span class="ph-icon">👶</span>
+      <span class="ph-lbl">Photo #1 — Hero Portrait<br>Best full-frame photo of Sophia</span>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">🌻 You're Invited · 2025 🌻</p>
+    <h1 class="hero-name">Sophia<br><span class="it">Mae</span></h1>
+    <p class="hero-script">is turning <em style="font-size:1.5em;color:var(--gold);">One</em> 🎀</p>
+    <div class="hero-rule"></div>
+    <p class="hero-date">Saturday &nbsp;·&nbsp; August 16, 2025</p>
+    <p class="hero-sub">Holy Baptism &amp; First Birthday Celebration</p>
+    <div class="scroll-hint"><span>Scroll to explore</span><div class="scroll-arrow"></div></div>
+  </div>
+</section>
+
+<!-- ══════════ POLAROID STRIP — PHOTOS #2–6 ══════════ -->
+<section class="sec strip-bg">
+  <div class="strip-hd">
+    <p class="sec-lbl">Our Little Sunshine</p>
+    <h2 class="sec-title">Moments of <em>Pure Joy</em></h2>
+  </div>
+  <div class="pol-track">
+    <div class="pol" onclick="openLB(2,'First smile that melted our hearts 💛')">
+      <div class="pol-frame"><img src="" onerror="this.style.display='none'"/><div class="pol-ph"><div class="pn">02</div><div class="pt">Photo #2<br>Newborn / early days</div></div></div>
+      <p class="pol-cap">First Smile 💛</p>
+    </div>
+    <div class="pol" onclick="openLB(3,'She loves the outdoors! 🌸')">
+      <div class="pol-frame"><img src="" onerror="this.style.display='none'"/><div class="pol-ph"><div class="pn">03</div><div class="pt">Photo #3<br>Cute candid shot</div></div></div>
+      <p class="pol-cap">Playground Baby 🌸</p>
+    </div>
+    <div class="pol" onclick="openLB(4,'Tummy time champion 🏆')">
+      <div class="pol-frame"><img src="" onerror="this.style.display='none'"/><div class="pol-ph"><div class="pn">04</div><div class="pt">Photo #4<br>Funny / silly moment</div></div></div>
+      <p class="pol-cap">Silly Face 😄</p>
+    </div>
+    <div class="pol" onclick="openLB(5,'Sweetest angel 😇')">
+      <div class="pol-frame"><img src="" onerror="this.style.display='none'"/><div class="pol-ph"><div class="pn">05</div><div class="pt">Photo #5<br>Sleeping / peaceful</div></div></div>
+      <p class="pol-cap">Sleeping Angel 😇</p>
+    </div>
+    <div class="pol" onclick="openLB(6,'Family is everything ☀️')">
+      <div class="pol-frame"><img src="" onerror="this.style.display='none'"/><div class="pol-ph"><div class="pn">06</div><div class="pt">Photo #6<br>With mommy or daddy</div></div></div>
+      <p class="pol-cap">Family Love ☀️</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FEATURED GRID — PHOTOS #7–9 ══════════ -->
+<svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:var(--ink);"><path d="M0,0 C480,56 960,0 1440,56 L1440,56 L0,56 Z" fill="var(--warm)"/></svg>
+<section class="sec feat-bg">
+  <div class="inner">
+    <p class="sec-lbl">Growing Every Day</p>
+    <h2 class="sec-title">Our <em>Favourite</em> Moments</h2>
+    <p class="sec-body">Every giggle, every milestone — Sophia fills our home with sunshine and our hearts with endless love.</p>
+    <div class="feat-grid">
+      <div class="fg-big" onclick="openLB(7,'One year of pure sunshine 🌻')">
+        <div class="fg-ph"><div class="pn">07</div><div class="pt">Photo #7 · Best portrait<br>(tall crop — left side)</div></div>
+        <div class="fg-badge">One Year of Sunshine 🌻</div>
+      </div>
+      <div class="fg-sm" onclick="openLB(8,'First steps! 👣')">
+        <div class="fg-ph"><div class="pn">08</div><div class="pt">Photo #8 · Milestone<br>(wide crop)</div></div>
+      </div>
+      <div class="fg-sm" onclick="openLB(9,'Bath time is the best time! 🛁')">
+        <div class="fg-ph"><div class="pn">09</div><div class="pt">Photo #9 · Playful shot<br>(wide crop)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MASONRY GALLERY — PHOTOS #10–15 ══════════ -->
+<svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:var(--warm);"><path d="M0,56 C480,0 960,56 1440,0 L1440,56 L0,56 Z" fill="var(--cream)"/></svg>
+<section class="sec gallery-bg">
+  <div class="inner">
+    <p class="sec-lbl">Gallery</p>
+    <h2 class="sec-title">A Year in <em>Pictures</em></h2>
+    <p class="sec-body">Swipe, click, and relive the beautiful first year of our little sunshine.</p>
+    <div class="masonry">
+      <div class="mi" onclick="openLB(10,'Look at that smile! 🌟')"><div class="mi-ph"><div class="pi">📸</div><div class="pn">10</div><div class="pt">Photo #10 · Any favourite</div></div></div>
+      <div class="mi" onclick="openLB(11,'First birthday outfit 🎀')"><div class="mi-ph"><div class="pi">🎀</div><div class="pn">11</div><div class="pt">Photo #11 · Outfit / dress</div></div></div>
+      <div class="mi" onclick="openLB(12,'Eating solids for the first time 🍌')"><div class="mi-ph"><div class="pi">🍌</div><div class="pn">12</div><div class="pt">Photo #12 · Food / eating</div></div></div>
+      <div class="mi" onclick="openLB(13,'With the whole family 👨‍👩‍👧')"><div class="mi-ph"><div class="pi">👨‍👩‍👧</div><div class="pn">13</div><div class="pt">Photo #13 · Family photo</div></div></div>
+      <div class="mi" onclick="openLB(14,'Always so curious! 🌿')"><div class="mi-ph"><div class="pi">🌿</div><div class="pn">14</div><div class="pt">Photo #14 · Outdoor / candid</div></div></div>
+      <div class="mi" onclick="openLB(15,'Sophia at one year old 🎂')"><div class="mi-ph"><div class="pi">🎂</div><div class="pn">15</div><div class="pt">Photo #15 · Cake smash / birthday</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <div class="lb-ph" id="lbContent">
+    <span class="pi" id="lbIcon" style="font-size:3.5rem">📸</span>
+    <span class="pt" id="lbTxt" style="font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(60,45,5,0.55);text-align:center;padding:0 28px;"></span>
+  </div>
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<!-- ══════════ EVENTS ══════════ -->
+<svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:var(--cream);"><path d="M0,0 C360,56 1080,0 1440,56 L1440,0 L0,0 Z" fill="var(--white)"/></svg>
+<section class="sec events-bg">
+  <div class="inner">
+    <p class="sec-lbl">The Celebration</p>
+    <h2 class="sec-title">Two <em>Joyful</em> Events</h2>
+    <p class="sec-body">We humbly request the honor of your presence as we celebrate these two precious milestones.</p>
+    <div class="cards">
+      <div class="ecard">
+        <span class="ec-icon">✝️</span>
+        <p class="ec-type">Event One</p>
+        <h3 class="ec-title">Holy Baptism</h3>
+        <div class="ec-row"><span class="ec-ri">📅</span><div><strong>Date</strong>Saturday, August 16, 2025</div></div>
+        <div class="ec-row"><span class="ec-ri">🕙</span><div><strong>Time</strong>10:00 AM</div></div>
+        <div class="ec-row"><span class="ec-ri">⛪</span><div><strong>Venue</strong>Our Lady of Lourdes Parish Church<br>123 Church Street, Quezon City</div></div>
+        <div class="ec-row"><span class="ec-ri">👗</span><div><strong>Attire</strong>Smart Casual — Yellow &amp; White encouraged!</div></div>
+      </div>
+      <div class="ecard">
+        <span class="ec-icon">🎂</span>
+        <p class="ec-type">Event Two</p>
+        <h3 class="ec-title">1st Birthday Party</h3>
+        <div class="ec-row"><span class="ec-ri">📅</span><div><strong>Date</strong>Saturday, August 16, 2025</div></div>
+        <div class="ec-row"><span class="ec-ri">🕐</span><div><strong>Time</strong>1:00 PM onwards</div></div>
+        <div class="ec-row"><span class="ec-ri">🏡</span><div><strong>Venue</strong>Golden Sunflower Events Place<br>456 Sunshine Ave., Quezon City</div></div>
+        <div class="ec-row"><span class="ec-ri">🎈</span><div><strong>Theme</strong>Little Sunshine — Yellow &amp; White</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(180deg,var(--white),var(--y4));"><path d="M0,56 C720,0 1440,56 1440,56 L0,56 Z" fill="var(--y4)"/></svg>
+<section class="sec tl-bg">
+  <div class="inner">
+    <p class="sec-lbl">Programme</p>
+    <h2 class="sec-title">Day's <em>Timeline</em></h2>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-dot">✝</div><div class="tl-body"><p class="tl-time">10:00 AM</p><p class="tl-ev">Holy Baptism</p><p class="tl-desc">Our Lady of Lourdes Parish Church</p></div></div>
+      <div class="tl-item"><div class="tl-dot">🕐</div><div class="tl-body"><p class="tl-time">1:00 PM</p><p class="tl-ev">Guest Arrival &amp; Welcome</p><p class="tl-desc">Registration, cocktail hour &amp; photo ops</p></div></div>
+      <div class="tl-item"><div class="tl-dot">🍽</div><div class="tl-body"><p class="tl-time">2:00 PM</p><p class="tl-ev">Lunch Reception</p><p class="tl-desc">Sit-down luncheon with family and friends</p></div></div>
+      <div class="tl-item"><div class="tl-dot">🎂</div><div class="tl-body"><p class="tl-time">3:00 PM</p><p class="tl-ev">Birthday Celebration</p><p class="tl-desc">Cake smash, first candle blowing &amp; program</p></div></div>
+      <div class="tl-item"><div class="tl-dot">🎮</div><div class="tl-body"><p class="tl-time">3:30 PM</p><p class="tl-ev">Games &amp; Entertainment</p><p class="tl-desc">Fun activities for kids and adults</p></div></div>
+      <div class="tl-item"><div class="tl-dot">🎁</div><div class="tl-body"><p class="tl-time">5:00 PM</p><p class="tl-ev">Token Distribution &amp; Closing</p><p class="tl-desc">Loot bags, party favors &amp; final photo ops</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DRESS CODE -->
+<section class="sec dress-bg">
+  <div class="inner">
+    <p class="sec-lbl">Dress Code</p>
+    <h2 class="sec-title">Wear <em>Sunshine</em></h2>
+    <p class="sec-body">Dress in our color theme — any combination of the palette below is perfectly beautiful.</p>
+    <div class="palette">
+      <div class="sw"><div class="sw-c" style="background:#F9D923;"></div><p class="sw-l">Sunshine<br>Yellow</p></div>
+      <div class="sw"><div class="sw-c" style="background:#FFFFFF;border:2px solid #eee;"></div><p class="sw-l">Pure<br>White</p></div>
+      <div class="sw"><div class="sw-c" style="background:#FFFAE8;border:2px solid #eee;"></div><p class="sw-l">Cream<br>White</p></div>
+      <div class="sw"><div class="sw-c" style="background:#C9A227;"></div><p class="sw-l">Warm<br>Gold</p></div>
+      <div class="sw"><div class="sw-c" style="background:#FFF3A3;border:2px solid #eee;"></div><p class="sw-l">Pastel<br>Yellow</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GIFTS -->
+<section class="sec gift-bg">
+  <div class="inner">
+    <p class="sec-lbl">Gift Registry</p>
+    <h2 class="sec-title">A Little <em>Love</em> Goes a Long Way</h2>
+    <p class="sec-body">Your presence is the greatest gift. But if you'd like to bless our little princess, here are ideas she'd adore.</p>
+    <div class="gift-grid">
+      <div class="gi"><span class="gi-ic">📚</span><span class="gi-tx">Books &amp; educational toys</span></div>
+      <div class="gi"><span class="gi-ic">👗</span><span class="gi-tx">Clothing (12–18 months)</span></div>
+      <div class="gi"><span class="gi-ic">🧸</span><span class="gi-tx">Soft toys &amp; plushies</span></div>
+      <div class="gi"><span class="gi-ic">🎨</span><span class="gi-tx">Art &amp; creative play sets</span></div>
+      <div class="gi"><span class="gi-ic">💛</span><span class="gi-tx">Gift cheque / cash gift</span></div>
+      <div class="gi"><span class="gi-ic">🛁</span><span class="gi-tx">Baby bath &amp; skin care sets</span></div>
+    </div>
+    <div class="gift-note">💳 <strong>Cash gifts</strong> via GCash or bank transfer — message us for details.<br>No need to wrap — just bring your love and warm smiles! 🌻</div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="sec rsvp-bg" id="rsvp">
+  <div class="inner">
+    <p class="sec-lbl" style="color:rgba(44,34,8,0.6);">RSVP</p>
+    <h2 class="sec-title" style="color:var(--ink);">Will You Join <em style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);">Us?</em></h2>
+    <p class="sec-body" style="color:var(--mid);">Kindly confirm your attendance on or before <strong>August 5, 2025</strong>.</p>
+    <div class="rsvp-box">
+      <div id="rsvpForm">
+        <div class="fr"><label>Your Full Name *</label><input type="text" id="gN" placeholder="e.g. Maria Santos"/></div>
+        <div class="fr"><label>Contact Number *</label><input type="tel" id="gP" placeholder="e.g. 09XX XXX XXXX"/></div>
+        <div class="fr"><label>Email Address</label><input type="email" placeholder="optional"/></div>
+        <div class="fr"><label>Number of Guests (including yourself)</label><select><option>1 person</option><option>2 persons</option><option>3 persons</option><option>4 persons</option><option>5 or more</option></select></div>
+        <div class="fr"><label>Which event(s) will you attend?</label>
+          <div class="rr">
+            <div class="ro"><input type="radio" name="ev" id="ev1" checked/><label for="ev1">Both Events 🎉</label></div>
+            <div class="ro"><input type="radio" name="ev" id="ev2"/><label for="ev2">Baptism Only ✝️</label></div>
+            <div class="ro"><input type="radio" name="ev" id="ev3"/><label for="ev3">Birthday Only 🎂</label></div>
+          </div>
+        </div>
+        <div class="fr"><label>Dietary / Special Notes</label><textarea placeholder="Allergies, dietary needs, or anything we should know..."></textarea></div>
+        <button class="btn-go" onclick="submitRSVP()">Confirm My Attendance 🌻</button>
+      </div>
+      <div class="rsvp-ok" id="rsvpOk">
+        <div class="ck">🌟</div>
+        <h3>Thank You!</h3>
+        <p>We're so happy you'll be joining Sophia's celebration! See you on August 16. 💛</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="sec contact-bg">
+  <div class="inner">
+    <p class="sec-lbl">Get in Touch</p>
+    <h2 class="sec-title">Questions? <em>We're Here</em></h2>
+    <p class="sec-body">Reach out to any of our hosts for directions, questions, or anything you need.</p>
+    <div class="contacts">
+      <div class="cc"><p class="cc-name">Mr. &amp; Mrs. Reyes</p><p class="cc-role">Parents of the Celebrant</p><p class="cc-num">📱 09XX-XXX-1234</p></div>
+      <div class="cc"><p class="cc-name">Lola Nena</p><p class="cc-role">Paternal Grandmother</p><p class="cc-num">📱 09XX-XXX-5678</p></div>
+      <div class="cc"><p class="cc-name">Ninang Carla</p><p class="cc-role">Godmother / Coordinator</p><p class="cc-num">📱 09XX-XXX-9012</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>With all our love from <strong>The Reyes Family 🌻</strong></p>
+  <p style="margin-top:8px;font-size:0.79rem;">August 16, 2025 &nbsp;·&nbsp; Quezon City &nbsp;·&nbsp; Baptism &amp; 1st Birthday of Sophia Mae</p>
+  <p style="margin-top:20px;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0.5;">📸 Photo Replacement Guide: Open HTML → find img src="" → replace with your photo file path or URL<br>Photo #1=Hero, #2–6=Polaroids, #7–9=Featured Grid, #10–15=Masonry Gallery</p>
+</footer>
+
+<script>
+  /* petals */
+  const pc=document.getElementById('petals');
+  ['#F9D923','#FFF3A3','#C9A227','#FFFAE8','#FBE96C','#ffffff','#E8C96A'].forEach((c,ci)=>{
+    for(let i=0;i<5;i++){
+      const p=document.createElement('div');p.className='petal';
+      const s=Math.random()*20+6;
+      p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}vw;top:${Math.random()*-300}px;background:${c};animation-duration:${Math.random()*14+8}s;animation-delay:${Math.random()*12}s;`;
+      pc.appendChild(p);
+    }
+  });
+
+  /* lightbox */
+  const caps={
+    2:'First smile that melted our hearts 💛',3:'She loves the outdoors! 🌸',
+    4:'Tummy time champion 🏆',5:'Sweetest angel 😇',6:'Family is everything ☀️',
+    7:'One year of pure sunshine 🌻',8:'First steps — a forever memory 👣',
+    9:'Bath time is always the best time 🛁',10:'Look at that smile! 🌟',
+    11:'Dressed up and ready to shine 🎀',12:'Discovering yummy foods 🍌',
+    13:'Our whole world in one frame 👨‍👩‍👧',14:'Always curious about everything 🌿',
+    15:'One year old and full of cake! 🎂'
+  };
+  function openLB(n,c){
+    document.getElementById('lb').classList.add('on');
+    document.getElementById('lbCap').textContent=caps[n]||c;
+    document.getElementById('lbTxt').textContent=`Photo #${String(n).padStart(2,'0')} · replace src="" with Sophia's real photo`;
+    document.body.style.overflow='hidden';
+  }
+  function closeLB(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+
+  /* rsvp */
+  function submitRSVP(){
+    if(!document.getElementById('gN').value.trim()||!document.getElementById('gP').value.trim()){alert('Please enter your name and contact number. 💛');return;}
+    document.getElementById('rsvpForm').style.display='none';
+    document.getElementById('rsvpOk').style.display='block';
+  }
+
+  /* scroll reveal */
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+  document.querySelectorAll('.ecard,.tl-item,.cc,.mi,.pol,.fg-big,.fg-sm,.gi').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(28px)';el.style.transition='opacity 0.55s ease,transform 0.55s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
